@@ -13,7 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'ArticleController@index');
+# get("URL" => "コントローラー＠アクション")
+
+Route::get('/', 'App\Http\Controllers\ArticleController@index');
+
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 

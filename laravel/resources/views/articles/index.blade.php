@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
+    
  @section('content')
-     <h1>Hello</h1>
+     <post-component></post-component>
  @endsection
  

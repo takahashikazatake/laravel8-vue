@@ -13,12 +13,12 @@ class ArticleController extends Controller
         $articles = [
             (object) [
                 'id' => 1,
-                'title' => 'タイトル1',
-                'body' => '本文1',
+                'title' => 'アパパパ',
+                'body' => 'hogehoge',
                 'created_at' => now(),
                 'user' => (object) [
                     'id' => 1,
-                    'name' => 'ユーザー名1',
+                    'name' => 'あらん',
                 ],
             ],
             (object) [

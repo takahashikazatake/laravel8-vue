@@ -22,7 +22,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div>
         <nav class="navbar navbar-expand-md navbar-dark shadow-sm blue-gradient">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -83,9 +83,10 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <div class="py-4" id="app">
             @yield('content')
-        </main>
+        </div>
     </div>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

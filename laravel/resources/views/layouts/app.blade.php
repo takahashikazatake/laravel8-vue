@@ -22,7 +22,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="app">
+    <div>
         <nav class="navbar navbar-expand-md navbar-dark shadow-sm blue-gradient">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

@@ -20,3 +20,7 @@ Route::get('/', 'App\Http\Controllers\ArticleController@index');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('users')->name('users.')->group(function () {
+    Route::get('/{name}', 'App\Http\Controllers\UserController@show')->name('show');
+});

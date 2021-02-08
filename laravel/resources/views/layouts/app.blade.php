@@ -58,7 +58,7 @@
                                 <a class="nav-link" href="#">投稿</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">マイページ</a>
+                                <a class="nav-link" href="{{ route('users.show', ['name' => auth()->user()->name ])}}">マイページ</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('logout') }}"

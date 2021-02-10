@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require("./bootstrap");
+import "./bootstrap";
 import ExampleComponent from "./components/ExampleComponent";
 import PostComponent from "./components/PostComponent";
 window.Vue = require("vue");

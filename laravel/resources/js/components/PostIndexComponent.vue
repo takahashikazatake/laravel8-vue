@@ -1,11 +1,14 @@
 <template>
-  <div class="d-flex flex-row-reverse">
-    <button
-      type="button"
-      class="btn btn-primary btn-sm"
-      data-toggle="modal"
-      data-target="#exampleModal"
-    >投稿</button>
+  <div class="container">
+    <div class="d-flex flex-row-reverse">
+      <button
+        type="button"
+        class="btn btn-primary btn-sm mb-3"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >投稿</button>
+    </div>
+    <post-component></post-component>
     <div
       class="modal fade"
       id="exampleModal"
@@ -43,7 +46,12 @@
 </template>
 
 <script>
-export default {};
+import PostComponent from "./PostComponent";
+export default {
+  components: {
+    PostComponent
+  }
+};
 </script>
 
 <style>

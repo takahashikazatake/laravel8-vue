@@ -1,11 +1,9 @@
 <template>
-  <div class="container">
-    <div class="card mb-2">
-      <div class="card-body">
-        <div class="font-weight-bold">{{ user }}</div>
-        <div class="card-title mt-4">{{ tweet }}</div>
-        <div class="card-text mt-3">投稿日時 {{ postDate }}</div>
-      </div>
+  <div class="card mb-2">
+    <div class="card-body">
+      <div class="font-weight-bold">{{ user }}</div>
+      <div class="card-title mt-4">{{ tweet }}</div>
+      <div class="card-text mt-3">投稿日時 {{ postDate }}</div>
     </div>
   </div>
 </template>
@@ -24,5 +22,4 @@ export default {
 </script>
 
 <style>
-
 </style>

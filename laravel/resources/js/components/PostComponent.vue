@@ -12,7 +12,12 @@
 export default {
   props: ["post"],
   data: function() {
-    return {};
+    return {
+      // id: this.post.id,
+      // user: this.user,
+      // tweet: this.tweet,
+      // createdAt: this.createdAt
+    };
   }
 };
 </script>

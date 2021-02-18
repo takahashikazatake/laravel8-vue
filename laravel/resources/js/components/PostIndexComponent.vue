@@ -27,6 +27,10 @@ export default {
   },
   methods: {
     addNewPost: function() {
+      if (this.newTweet == "") {
+        alert("入力してください");
+        return;
+      }
       this.posts.push({
         id: this.nextId++,
         user: this.name,

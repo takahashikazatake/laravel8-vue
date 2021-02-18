@@ -22,8 +22,15 @@ export default {
       posts: [],
       name: this.userName.name,
       newTweet: "",
-      nextId: 1
+      nextId: 1,
+      date: ""
     };
+  },
+  computed: {
+    currentTime: function() {
+      this.date = new Date();
+      return this.date.toLocaleDateString();
+    }
   },
   methods: {
     addNewPost: function() {
@@ -35,7 +42,7 @@ export default {
         id: this.nextId++,
         user: this.name,
         tweet: this.newTweet,
-        createdAt: "2021/02/12"
+        createdAt: this.currentTime
       });
       this.newTweet = "";
     }

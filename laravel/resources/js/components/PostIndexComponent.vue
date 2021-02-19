@@ -43,16 +43,26 @@ export default {
   },
   methods: {
     addNewPost: function() {
-      if (this.newTweet == "") {
-        alert("入力してください");
-        return;
-      }
-      this.posts.unshift({
+      let post = {
         id: this.nextId,
         user: this.name,
         tweet: this.newTweet,
         createdAt: this.currentTime
-      });
+      };
+      if (this.newTweet == "") {
+        alert("入力してください");
+        return;
+      }
+      this.posts.unshift(post);
+      //ここにaxiosのPUTを置く
+      axios
+        .post("/article", post)
+        .then(function(res) {
+          console.log(res.data);
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
       this.newTweet = "";
     },
     getPosts: function() {

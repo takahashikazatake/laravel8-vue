@@ -6,13 +6,13 @@
 
 import "./bootstrap";
 import ExampleComponent from "./components/ExampleComponent";
-import PostComponent from "./components/PostComponent";
+import PostIndexComponent from "./components/PostIndexComponent";
 window.Vue = require("vue");
 
 const app = new Vue({
     el: "#app",
     components: {
         ExampleComponent,
-        PostComponent
+        PostIndexComponent
     }
 });

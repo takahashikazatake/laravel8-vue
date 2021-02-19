@@ -1,6 +1,10 @@
 @extends('layouts.app')
     
  @section('content')
-     <post-component></post-component>
+    <post-index-component 
+    :user-name='@json(Auth::user())'
+    :current-post='@json($articles)'
+    >
+    </post-index-component>
  @endsection
  

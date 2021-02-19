@@ -16,20 +16,29 @@ export default {
   components: {
     PostComponent
   },
-  props: ["userName"],
+  props: ["userName", "currentPost"],
+  created() {
+    this.getPosts();
+  },
   data: function() {
     return {
       posts: [],
       name: this.userName.name,
       newTweet: "",
-      nextId: 1,
-      date: ""
+      date: "",
+      fetchedPost: this.currentPost
     };
   },
   computed: {
     currentTime: function() {
       this.date = new Date();
       return this.date.toLocaleDateString();
+    },
+    currentId: function() {
+      return this.posts[0].id;
+    },
+    nextId: function() {
+      return this.currentId + 1;
     }
   },
   methods: {
@@ -38,13 +47,27 @@ export default {
         alert("入力してください");
         return;
       }
-      this.posts.push({
-        id: this.nextId++,
+      this.posts.unshift({
+        id: this.nextId,
         user: this.name,
         tweet: this.newTweet,
         createdAt: this.currentTime
       });
       this.newTweet = "";
+    },
+    getPosts: function() {
+      let obj = this.fetchedPost;
+      let post = this.posts;
+      let name = this.name;
+
+      Object.keys(obj).forEach(function(key) {
+        post.unshift({
+          id: obj[key].id,
+          user: name,
+          tweet: obj[key].body,
+          createdAt: obj[key].created_at
+        });
+      });
     }
   }
 };

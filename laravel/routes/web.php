@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', 'App\Http\Controllers\ArticleController@index');
+Route::get('/', 'App\Http\Controllers\ArticleController@index')->name('article.index');
+Route::resource('/article', 'App\Http\Controllers\ArticleController')->except(['index', 'create']);
 
 Auth::routes();
 

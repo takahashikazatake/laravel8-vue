@@ -18,4 +18,8 @@ class ArticleController extends Controller
         $article->user_id = $request->user()->id;
         $article->save();
     }
+
+    public function destroy(Article $article) {
+        $article->delete();
+    }
 }

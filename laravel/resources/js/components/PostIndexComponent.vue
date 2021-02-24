@@ -6,22 +6,17 @@
       </div>
       <button type="submit" class="btn btn-primary btn-sm mb-3">投稿</button>
     </form>
-    <div class="card mb-2" v-for="post in posts" :key="post.id">
-      <div class="card-header d-flex flex-row-reverse">
-        <span @click="deletePost(post.id)">&times;</span>
-      </div>
-      <div class="card-body">
-        <div class="font-weight-bold">{{ post.user }}</div>
-        <div class="card-title mt-4">{{ post.tweet }}</div>
-        <div class="card-text mt-3">投稿日時 {{ post.createdAt }}</div>
-      </div>
-    </div>
+    <post-card v-for="post in posts" :key="post.id" :post="post" @del="deletePost(post.id)"></post-card>
   </div>
 </template>
 
 <script>
+import PostCard from "./PostCard";
 export default {
   props: ["userName", "currentPost"],
+  components: {
+    PostCard
+  },
   created() {
     this.getPosts();
   },

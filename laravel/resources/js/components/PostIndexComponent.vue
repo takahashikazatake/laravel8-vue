@@ -6,17 +6,17 @@
       </div>
       <button type="submit" class="btn btn-primary btn-sm mb-3">投稿</button>
     </form>
-    <post-component v-for="post in posts" :key="post.id" :post="post"></post-component>
+    <post-card v-for="post in posts" :key="post.id" :post="post" @del="deletePost(post.id)"></post-card>
   </div>
 </template>
 
 <script>
-import PostComponent from "./PostComponent";
+import PostCard from "./PostCard";
 export default {
-  components: {
-    PostComponent
-  },
   props: ["userName", "currentPost"],
+  components: {
+    PostCard
+  },
   created() {
     this.getPosts();
   },
@@ -54,14 +54,14 @@ export default {
         return;
       }
       this.posts.unshift(post);
-      //ここにaxiosのPUTを置く
+
       axios
         .post("/article", post)
         .then(function(res) {
-          console.log(res.data);
+          // TODO: article apiの受信データ処理を行う
         })
         .catch(function(err) {
-          console.log(err);
+          // TODO: エラー発生時の処理を行う
         });
       this.newTweet = "";
     },
@@ -78,6 +78,28 @@ export default {
           createdAt: obj[key].created_at
         });
       });
+    },
+    deletePost: function(id) {
+      //配列から選択されたオブジェクトを削除
+      let posts = this.posts;
+      const selectedPost = posts.find(function(item) {
+        return item.id === id;
+      });
+
+      posts.some(function(val, index) {
+        if (val === selectedPost) {
+          posts.splice(index, 1);
+        }
+      });
+
+      axios
+        .delete("/article/" + id)
+        .then(function(res) {
+          // TODO: article apiの受信データ処理を行う
+        })
+        .catch(function(err) {
+          // TODO: エラー発生時の処理を行う
+        });
     }
   }
 };

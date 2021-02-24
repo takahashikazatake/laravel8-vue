@@ -58,10 +58,10 @@ export default {
       axios
         .post("/article", post)
         .then(function(res) {
-          console.log(res.data);
+          // TODO: article apiの受信データ処理を行う
         })
         .catch(function(err) {
-          console.log(err);
+          // TODO: エラー発生時の処理を行う
         });
       this.newTweet = "";
     },
@@ -95,10 +95,10 @@ export default {
       axios
         .delete("/article/" + id)
         .then(function(res) {
-          console.log(res.data);
+          // TODO: article apiの受信データ処理を行う
         })
         .catch(function(err) {
-          console.log(err);
+          // TODO: エラー発生時の処理を行う
         });
     }
   }

@@ -78,17 +78,16 @@ export default {
           createdAt: obj[key].created_at
         });
       });
-      console.log("Hello");
     },
     deletePost: function(id) {
       //配列から選択されたオブジェクトを削除
       let posts = this.posts;
       const selectedPost = posts.find(function(item) {
-        return item.id == id;
+        return item.id === id;
       });
 
       posts.some(function(val, index) {
-        if (val == selectedPost) {
+        if (val === selectedPost) {
           posts.splice(index, 1);
         }
       });

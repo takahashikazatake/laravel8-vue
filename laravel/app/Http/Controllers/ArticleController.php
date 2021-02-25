@@ -26,4 +26,13 @@ class ArticleController extends Controller
     public function destroy(Article $article) {
         $article->delete();
     }
+
+    public function data() {
+        $articles = Article::all();
+        foreach($articles as $article) {
+            $user_name = $article->user->name;
+            $article->user_name = $user_name;
+        }
+        return $articles;
+    }
 }

@@ -66,16 +66,15 @@ export default {
       this.newTweet = "";
     },
     getPosts: function() {
-      let obj = this.fetchedPost;
       let post = this.posts;
-      let name = this.name;
-
-      Object.keys(obj).forEach(function(key) {
-        post.unshift({
-          id: obj[key].id,
-          user: name,
-          tweet: obj[key].body,
-          createdAt: obj[key].created_at
+      axios.get("/api/article/data").then(function(res) {
+        res.data.forEach(function(el) {
+          post.unshift({
+            id: el.id,
+            user: el.user_name,
+            tweet: el.body,
+            createdAt: el.created_at
+          });
         });
       });
     },

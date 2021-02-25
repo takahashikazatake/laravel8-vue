@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/article/data', 'App\Http\Controllers\ArticleController@data');
+Route::get('/article/fetchAllData', 'App\Http\Controllers\ArticleController@fetchAllData');

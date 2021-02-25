@@ -27,11 +27,10 @@ class ArticleController extends Controller
         $article->delete();
     }
 
-    public function data() {
+    public function fetchAllData() {
         $articles = Article::all();
         foreach($articles as $article) {
-            $user_name = $article->user->name;
-            $article->user_name = $user_name;
+            $article->user_name = $article->user->name;
         }
         return $articles;
     }

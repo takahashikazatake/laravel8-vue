@@ -74,7 +74,7 @@ export default {
     },
     getPosts: function() {
       let post = this.posts;
-      axios.get("/api/article/data").then(function(res) {
+      axios.get("/api/article/fetchAllData").then(function(res) {
         res.data.forEach(function(el) {
           post.unshift({
             id: el.id,

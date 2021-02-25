@@ -6,7 +6,13 @@
       </div>
       <button type="submit" class="btn btn-primary btn-sm mb-3">投稿</button>
     </form>
-    <post-card v-for="post in posts" :key="post.id" :post="post" @del="deletePost(post.id)"></post-card>
+    <post-card
+      v-for="post in posts"
+      :key="post.id"
+      :post="post"
+      @del="deletePost(post.id)"
+      :auth-id="userId"
+    ></post-card>
   </div>
 </template>
 
@@ -25,7 +31,8 @@ export default {
       posts: [],
       name: this.userName.name,
       newTweet: "",
-      date: ""
+      date: "",
+      userId: this.userName.id
     };
   },
   computed: {
@@ -46,7 +53,8 @@ export default {
         id: this.nextId,
         user: this.name,
         tweet: this.newTweet,
-        createdAt: this.currentTime
+        createdAt: this.currentTime,
+        userId: this.userId
       };
       if (this.newTweet == "") {
         alert("入力してください");
@@ -72,7 +80,8 @@ export default {
             id: el.id,
             user: el.user_name,
             tweet: el.body,
-            createdAt: el.created_at
+            createdAt: el.created_at,
+            userId: el.user_id
           });
         });
       });

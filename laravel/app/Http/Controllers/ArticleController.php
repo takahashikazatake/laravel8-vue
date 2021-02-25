@@ -8,8 +8,12 @@ use App\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller
 {
+    public function __construct() {
+        $this->authorizeResource(Article::class, 'article');
+    }
+
     public function index() {
-        $articles = Article::all();
+        $articles = Article::all()->sortByDesc('created_at');
         return view('articles.index', ['articles' => $articles]);
     }
 
@@ -21,5 +25,13 @@ class ArticleController extends Controller
 
     public function destroy(Article $article) {
         $article->delete();
+    }
+
+    public function fetchAllData() {
+        $articles = Article::all();
+        foreach($articles as $article) {
+            $article->user_name = $article->user->name;
+        }
+        return $articles;
     }
 }

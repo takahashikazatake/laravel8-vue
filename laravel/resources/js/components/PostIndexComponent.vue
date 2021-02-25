@@ -6,14 +6,20 @@
       </div>
       <button type="submit" class="btn btn-primary btn-sm mb-3">投稿</button>
     </form>
-    <post-card v-for="post in posts" :key="post.id" :post="post" @del="deletePost(post.id)"></post-card>
+    <post-card
+      v-for="post in posts"
+      :key="post.id"
+      :post="post"
+      @del="deletePost(post.id)"
+      :auth-id="userId"
+    ></post-card>
   </div>
 </template>
 
 <script>
 import PostCard from "./PostCard";
 export default {
-  props: ["userName", "currentPost"],
+  props: ["userName"],
   components: {
     PostCard
   },
@@ -26,7 +32,7 @@ export default {
       name: this.userName.name,
       newTweet: "",
       date: "",
-      fetchedPost: this.currentPost
+      userId: this.userName.id
     };
   },
   computed: {
@@ -47,7 +53,8 @@ export default {
         id: this.nextId,
         user: this.name,
         tweet: this.newTweet,
-        createdAt: this.currentTime
+        createdAt: this.currentTime,
+        userId: this.userId
       };
       if (this.newTweet == "") {
         alert("入力してください");
@@ -66,16 +73,16 @@ export default {
       this.newTweet = "";
     },
     getPosts: function() {
-      let obj = this.fetchedPost;
       let post = this.posts;
-      let name = this.name;
-
-      Object.keys(obj).forEach(function(key) {
-        post.unshift({
-          id: obj[key].id,
-          user: name,
-          tweet: obj[key].body,
-          createdAt: obj[key].created_at
+      axios.get("/api/article/fetchAllData").then(function(res) {
+        res.data.forEach(function(el) {
+          post.unshift({
+            id: el.id,
+            user: el.user_name,
+            tweet: el.body,
+            createdAt: el.created_at,
+            userId: el.user_id
+          });
         });
       });
     },

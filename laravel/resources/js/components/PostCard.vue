@@ -1,7 +1,7 @@
 <template>
   <div class="card mb-2">
     <div class="card-header d-flex flex-row-reverse">
-      <span @click="del">&times;</span>
+      <span @click="del" v-show="post.userId === this.authId">&times;</span>
     </div>
     <div class="card-body">
       <div class="font-weight-bold">{{ post.user }}</div>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  props: ["post"],
+  props: ["post", "authId"],
   methods: {
     del: function() {
       this.$emit("del");

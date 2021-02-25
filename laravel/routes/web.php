@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'App\Http\Controllers\ArticleController@index')->name('article.index');
-Route::resource('/article', 'App\Http\Controllers\ArticleController')->except(['index', 'create']);
+Route::resource('/article', 'App\Http\Controllers\ArticleController')->except(['index', 'create'])->middleware('auth');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('users')->name('users.')->group(function () {
-    Route::get('/{name}', 'App\Http\Controllers\UserController@show')->name('show');
+    Route::get('/{name}', 'App\Http\Controllers\UserController@show')->name('show')->middleware('auth');
 });

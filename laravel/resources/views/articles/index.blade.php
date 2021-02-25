@@ -4,7 +4,6 @@
    @auth
     <post-index-component 
       :user-name='@json(Auth::user())'
-      :current-post='@json($articles)'
       >
     </post-index-component>
    @endauth

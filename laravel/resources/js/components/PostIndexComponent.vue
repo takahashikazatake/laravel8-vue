@@ -13,7 +13,7 @@
 <script>
 import PostCard from "./PostCard";
 export default {
-  props: ["userName", "currentPost"],
+  props: ["userName"],
   components: {
     PostCard
   },
@@ -25,8 +25,7 @@ export default {
       posts: [],
       name: this.userName.name,
       newTweet: "",
-      date: "",
-      fetchedPost: this.currentPost
+      date: ""
     };
   },
   computed: {

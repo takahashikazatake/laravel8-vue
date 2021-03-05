@@ -4,7 +4,7 @@
 
 @section('content')
   <div class="container">
-    <div class="card mt-3">
+    <div class="card mt-3 mb-4">
       <div class="card-body">
         <div class="d-flex flex-row">
           <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
@@ -28,5 +28,8 @@
         </div>
       </div>
     </div>
+    @foreach($articles as $article)
+      @include('articles.post')
+    @endforeach
   </div>
 @endsection

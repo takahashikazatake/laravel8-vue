@@ -90,7 +90,6 @@ export default {
         });
     },
     deletePost: function(id) {
-      //配列から選択されたオブジェクトを削除
       let posts = this.posts;
       const selectedPost = posts.find(function(item) {
         return item.id === id;

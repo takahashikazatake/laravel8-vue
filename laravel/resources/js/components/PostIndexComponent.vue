@@ -32,35 +32,31 @@ export default {
       name: this.userName.name,
       newTweet: "",
       date: "",
-      userId: this.userName.id
+      userId: this.userName.id,
+      postId: 1
     };
   },
   computed: {
     currentTime: function() {
       this.date = new Date();
       return this.date.toLocaleDateString();
-    },
-    currentId: function() {
-      return this.posts[0].id;
-    },
-    nextId: function() {
-      return this.currentId + 1;
     }
   },
   methods: {
     addNewPost: function() {
       let post = {
-        id: this.nextId,
+        id: this.postId++,
         user: this.name,
         tweet: this.newTweet,
         createdAt: this.currentTime,
         userId: this.userId
       };
+      let posts = this.posts;
+
       if (this.newTweet == "") {
         alert("入力してください");
         return;
       }
-      this.posts.unshift(post);
 
       axios
         .post("/article", post)
@@ -70,21 +66,28 @@ export default {
         .catch(function(err) {
           // TODO: エラー発生時の処理を行う
         });
+      this.posts.unshift(post);
       this.newTweet = "";
     },
     getPosts: function() {
       let post = this.posts;
-      axios.get("/api/article/fetchAllData").then(function(res) {
-        res.data.forEach(function(el) {
-          post.unshift({
-            id: el.id,
-            user: el.user_name,
-            tweet: el.body,
-            createdAt: el.created_at,
-            userId: el.user_id
+      let setPostId = this.setPostId;
+      axios
+        .get("/api/article/fetchAllData")
+        .then(function(res) {
+          res.data.forEach(function(el) {
+            post.unshift({
+              id: el.id,
+              user: el.user_name,
+              tweet: el.body,
+              createdAt: el.created_at,
+              userId: el.user_id
+            });
           });
+        })
+        .then(function(res) {
+          setPostId(post[0].id);
         });
-      });
     },
     deletePost: function(id) {
       //配列から選択されたオブジェクトを削除
@@ -107,6 +110,9 @@ export default {
         .catch(function(err) {
           // TODO: エラー発生時の処理を行う
         });
+    },
+    setPostId: function(id) {
+      this.postId += id;
     }
   }
 };

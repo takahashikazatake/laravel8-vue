@@ -27,7 +27,7 @@ class ArticleController extends Controller
         $article->delete();
     }
 
-    public function fetchAllData() {
+    public function fetchAllArticles() {
         $articles = Article::all();
         foreach($articles as $article) {
             $article->user_name = $article->user->name;

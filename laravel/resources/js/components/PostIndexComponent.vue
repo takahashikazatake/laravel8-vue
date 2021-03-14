@@ -73,15 +73,15 @@ export default {
       let post = this.posts;
       let setPostId = this.setPostId;
       axios
-        .get("/api/article/fetchAllData")
+        .get("/api/article/fetchAllArticles")
         .then(function(res) {
-          res.data.forEach(function(el) {
+          res.data.forEach(function(article) {
             post.unshift({
-              id: el.id,
-              user: el.user_name,
-              tweet: el.body,
-              createdAt: el.created_at,
-              userId: el.user_id
+              id: article.id,
+              user: article.user_name,
+              tweet: article.body,
+              createdAt: article.created_at,
+              userId: article.user_id
             });
           });
         })

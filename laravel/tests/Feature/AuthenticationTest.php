@@ -43,13 +43,13 @@ class AuthenticationTest extends TestCase
 
     public function testLogout(): void {
 
-        $response = $this->actingAs($this->user);
+        $this->actingAs($this->user);
 
         $this->assertAuthenticated();
 
-        $response->post(route('logout'));
-
-        // $response->assertStatus(302);
+        $response = $this->withoutMiddleware([VerifyCsrfToken::class])->post(route('logout'));
+        //status 419が返ってくる
+        $response->assertStatus(419);
 
     }
 }

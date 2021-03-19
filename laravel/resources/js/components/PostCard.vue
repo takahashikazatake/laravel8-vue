@@ -4,9 +4,14 @@
       <span @click="del" v-show="post.userId === this.authId">&times;</span>
     </div>
     <div class="card-body">
-      <a :href="url" class="text-dark">
-        <div class="font-weight-bold">{{ post.user }}</div>
-      </a>
+      <div class="d-flex">
+        <a :href="url" class="text-dark">
+          <i class="fas fa-user-circle fa-3x mr-3"></i>
+        </a>
+        <a :href="url" class="text-dark mt-1">
+          <div class="font-weight-bold">{{ post.user }}</div>
+        </a>
+      </div>
       <div class="card-title mt-4">{{ post.tweet }}</div>
       <div class="card-text mt-3">投稿日時 {{ post.createdAt }}</div>
     </div>

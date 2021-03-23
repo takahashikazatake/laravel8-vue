@@ -23,7 +23,7 @@ export default {
   props: ["post", "authId"],
   data: function() {
     return {
-      url: "users/" + this.post.user
+      url: `users/${this.post.user}`
     };
   },
   methods: {

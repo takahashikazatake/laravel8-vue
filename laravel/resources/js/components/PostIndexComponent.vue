@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <form v-on:submit.prevent="addNewPost">
-      <div class="form-group">
+    <form v-on:submit.prevent="addNewPost" class="d-flex mb-4 mt-1">
+      <div class="form-group flex-grow-1">
         <input type="text" class="form-control" v-model="newTweet" />
       </div>
-      <button type="submit" class="btn btn-primary btn-sm mb-3">投稿</button>
+      <button type="submit" class="btn btn-primary btn-sm mb-4">投稿</button>
     </form>
     <post-card
       v-for="post in posts"

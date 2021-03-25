@@ -72,6 +72,7 @@ export default {
     getPosts: function() {
       let post = this.posts;
       let setPostId = this.setPostId;
+      let formatDate = this.formatDate;
       axios
         .get("/api/article/fetchAllArticles")
         .then(function(res) {
@@ -80,7 +81,7 @@ export default {
               id: article.id,
               user: article.user_name,
               tweet: article.body,
-              createdAt: article.created_at,
+              createdAt: formatDate(article.created_at),
               userId: article.user_id
             });
           });
@@ -112,6 +113,12 @@ export default {
     },
     setPostId: function(id) {
       this.postId += id;
+    },
+    formatDate: function(date) {
+      return date
+        .split("")
+        .splice(0, 10)
+        .join("");
     }
   }
 };

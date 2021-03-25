@@ -91,6 +91,12 @@ export default {
         });
     },
     deletePost: function(id) {
+      const judge = confirm("投稿を削除しますか？");
+
+      if (!judge) {
+        return;
+      }
+
       let posts = this.posts;
       const selectedPost = posts.find(function(item) {
         return item.id === id;

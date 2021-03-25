@@ -17,16 +17,6 @@
           </a>
         </h2>
       </div>
-      <div class="card-body">
-        <div class="card-text">
-          <a href="" class="text-muted">
-            10 フォロー
-          </a>
-          <a href="" class="text-muted">
-            10 フォロワー
-          </a>
-        </div>
-      </div>
     </div>
     @foreach($articles as $article)
       @include('articles.post')

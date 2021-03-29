@@ -18,13 +18,24 @@ class UserController extends Controller
     public function edit(string $name) {
         $user = User::where('name', $name)->first();
 
+        if(auth()->id() !== $user->id) {
+            return view('articles.index');
+        }
+
         return view('users.edit', ['user' => $user]);
     }
 
     public function update(Request $request, string $name) {
         $user = User::where(['name' => $name])->first();
+
+        if(auth()->id() !== $user->id) {
+            return view('articles.index');
+        }
+
         $user->description = $request->description;
+        
         $user->save();
+
         return redirect()->route('users.show', ['name' => $name]);
     }
 }

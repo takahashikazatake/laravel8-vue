@@ -31,5 +31,6 @@
     @foreach($articles as $article)
       @include('articles.post')
     @endforeach
+    {{ $articles->links() }}
   </div>
 @endsection
